@@ -1,0 +1,31 @@
+<div>
+    <span><a href="/Dashboard">Dashboard</a></s></span> @*change link to dashboard link*@
+    <span><a href="/logout">Logout</a></s></span> @*change link to logout*@
+    <title>Wedding Planner</title>
+    
+    <div>
+        @model Wedding
+        <h2>Plan Your Wedding</h2>
+        <form asp-action="AddWeddingPost" asp-controller="Home" method="post"> 
+            
+            <span asp-validation-for="WedderOne"></span>
+            <label asp-for="WedderOne">Wedder One:</label>
+            <input type="text" asp-for="WedderOne"></input>
+
+            <span asp-validation-for="WedderTwo"></span>
+            <label asp-for="WedderTwo">Wedder Two:</label>
+            <input type="text" asp-for="WedderTwo"></input>
+            
+            <span asp-validation-for="date"></span>
+            <label asp-for="date">Date:</label>
+            <input type="date" asp-for="date"></input> @*check how to do datetime type*@
+            
+            <span asp-validation-for="address"></span>
+            <label asp-for="address"> Adress:</label>
+            <input type="text" asp-for="address"></input>
+
+            @*<input type="hidden" asp-for="UserId" value="@ViewBag.ThisUserId">*@
+
+            <button type="submit">Create</button>
+        </form>
+    </div>

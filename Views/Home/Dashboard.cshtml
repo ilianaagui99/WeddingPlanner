@@ -1,0 +1,59 @@
+<div>
+    <span><a href="/">Logout</a></s></span> @*change link to logout*@
+    <title>Dashboard</title>
+    <h1>Welcome to the Wedding Planner</h1>
+    <div>
+         <ul>
+                <table>
+                    <thead>
+                        <th>Wedding</th>
+                        <th>Date</th>
+                        <th>Guest</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                    @if (ViewBag.AllWeddings != null)
+                    {
+                        @foreach (var boda in ViewBag.AllWeddings)
+                        {
+                    <tr>
+                        <td> <a href="SingleWedding/@boda.WeddingId">@boda.WedderOne & @boda.WedderTwo</a> </td> @*wedders*@
+                                <td>@boda.date.ToString("MMM d, yyyy")</td>  @*date*@
+                                <td>@boda.UsersWhoRSVP.Count</td> @*guest count*@
+                                @if (boda.UserId == ViewBag.UserId)@*if wedding belongs to user*@
+                                {
+                                    <td><a href="/delete/@boda.WeddingId">Delete</a></td>
+                                }
+                                else
+                                {
+                                    int temp = 0;
+                                    @foreach (var a in boda.UsersWhoRSVP)
+                                    {
+                                        if (a.User.UserId == ViewBag.UserId)
+                                        {
+                                            temp = a.AssociationId;
+                                        }
+                                    }
+                                    @if (temp == 0)
+                                    {
+                                        <td><a href="/rsvp/@boda.WeddingId">RSVP</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td><a href="/unrsvp/@temp">Un-RSVP</a></td>
+                                    }
+                                }
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+                   
+                
+            
+        </ul>
+
+    </div>
+  
+    <span><a href="/AddWedding">New Wedding</a></s></span> 
+</div>

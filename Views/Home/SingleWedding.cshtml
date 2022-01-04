@@ -1,0 +1,17 @@
+<div>
+    <span><a href="/logout">Logout</a></s></span> 
+    <span><a href="/Dashboard">Dashboard</a></s></span> 
+    <title>Wedding</title>
+    <h1>@ViewBag.SpecificWedding.WedderOne and @ViewBag.SpecificWedding.WedderTwo 's Wedding </h1>
+    <h2>Date: @ViewBag.SpecificWedding.date.ToString("MMMM d, yyyy")</h2>
+    <div>
+        <h3>Guest</h3>
+        @{
+        foreach (var guest in ViewBag.AllGuests)
+        {
+            <p>@guest.User.FirstName & @guest.User.LastName</p>
+        }
+    }
+
+    </div>
+</div>
